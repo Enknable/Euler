@@ -1,0 +1,7 @@
+s=''
+k = 1
+for i in range(0,1000000):
+  s+=str(i)
+for i in range(0,6):
+  k *= int(s[10**i])
+print(k)

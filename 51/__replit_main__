@@ -1,0 +1,29 @@
+from sympy import sieve
+from sympy import isprime
+import time
+
+def prime_search(primes):
+  str_prime = str(primes)
+  instances = []
+  for char_idx, char in enumerate(str_prime):
+    if str_prime.count(char) >= 2:
+      instances.append(char_idx)
+  converted = list(str_prime)
+  count = 0
+  captured = []
+  for nums in range(10):
+    for indices in instances:
+      converted[indices] = str(nums)
+    reverted = ''.join(converted)
+    if isprime(reverted) and reverted not in captured:
+      captured.append(reverted)
+      count += 1
+  if count >= 8:
+    print(captured)
+    #return True
+
+Time = time.time()
+for primes in sieve.primerange(0, 9999999):
+  if prime_search(primes):
+    print(primes)
+    break

@@ -1,0 +1,30 @@
+import math
+import itertools
+
+x = []
+perm = None
+
+# Create prime list from 1000-10000
+for num in range(1000,10000):
+    if all(num%i!=0 for i in range(2,int(math.sqrt(num))+1)):
+       x.append(num)
+
+# Create sets that hold each permutations of every prime number
+# Convert sets to integer lists
+# Throw away lists that don't hold solely prime numbers
+for i in x:
+  k = set(list(itertools.permutations(str(i), 4)))
+  k = [int(''.join(j)) for j in k]
+  m = set(k) & set(x)
+  
+  # Check for the pattern of primes that are equally separated 
+  # Print and Exit
+  for j in m:
+    if j-3330 in m and j-6660 in m and j != 8147:
+      perm = str(j-6660)+str(j-3330)+str(j)
+      print(perm)
+      break
+  if perm:
+    break
+
+  

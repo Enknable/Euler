@@ -1,0 +1,30 @@
+import math
+x = []
+maxs = 0
+for num in range(2,1000001):
+    if all(num%i!=0 for i in range(2,int(math.sqrt(num))+1)):
+       x.append(num)
+
+##41539 500009
+count = 0
+for i in range(len(x)-1, 0, -1):
+  if x[i]+x[i-1] < 1000001:
+    count = i
+    break
+
+
+for i in range(count):
+  sums = x[i]
+  for j in range(i+1, count):
+    sums += x[j]
+    if sums < 1000001:
+      if sums in x:
+        leng = j-i
+        if leng > maxs:
+          maxs = leng
+          print(sums, maxs, i, j)
+    else:
+      break
+      
+      
+      

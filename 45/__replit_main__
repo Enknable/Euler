@@ -1,0 +1,23 @@
+def tri(num):
+  x = int((num * (num + 1)/2))
+  return x
+
+def pen(num):
+  x = int((num * (3 * num - 1)/2))
+  return x
+  
+def hex(num):
+  x = int(num * (2 * num - 1))
+  return x
+
+tr = []
+pn = []
+hn = []
+
+for i in range(1,500000):
+  tr.append(tri(i))
+  pn.append(pen(i))
+  hn.append(hex(i))
+  
+u = set.intersection(set(tr),set(pn),set(hn))
+print(u)

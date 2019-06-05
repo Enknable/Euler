@@ -1,0 +1,33 @@
+import math
+
+def prime_factors(n):
+    i = 2
+    factors = []
+    facts = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    
+    for j in factors:
+      if factors.count(j) == 1:
+        facts.append(j)
+      elif factors.count(j) > 1:
+        facts.append(str(j)+"*"+str(factors.count(j)))
+        factors = list(filter((j).__ne__, factors))
+    return facts
+
+for i in range(2, 999999):
+  if len(prime_factors(i)) == 4:
+    if len(prime_factors(i+1)) == 4:
+      if len(prime_factors(i+2)) == 4:
+        if len(prime_factors(i+3)) == 4:
+          print(i, prime_factors(i))
+          break
+    
+    
+    
